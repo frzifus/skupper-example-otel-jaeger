@@ -1,0 +1,8 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: skupper-catalog
+  namespace: olm
+spec:
+  sourceType: grpc
+  image: quay.io/skupper/skupper-operator-index:v1.0.0
