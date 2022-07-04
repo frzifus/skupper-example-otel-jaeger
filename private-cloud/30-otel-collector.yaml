@@ -1,0 +1,32 @@
+# https://help.sumologic.com/Traces/01Getting_Started_with_Transaction_Tracing/Set_up_traces_collection_for_other_environments
+
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: sidecar-for-my-app
+spec:
+  mode: sidecar
+  config: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+      jaeger:
+        protocols:
+          thrift_compact:
+
+    processors:
+
+    exporters:
+      logging:
+      # Data sources: traces, metrics
+      otlphttp:
+        endpoint: https://otel-liked-collector:4318/v1/traces
+
+    service:
+      pipelines:
+        traces:
+          receivers: [jaeger,otlp]
+          processors: []
+          exporters: [logging]
