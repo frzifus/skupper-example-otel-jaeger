@@ -20,9 +20,10 @@ spec:
 
     exporters:
       logging:
-      # Data sources: traces, metrics
-      otlphttp:
-        endpoint: https://otel-liked-collector:4318/v1/traces
+      otlp:
+        endpoint: http://otel-liked-collector:4317
+        tls:
+          insecure: true
 
     service:
       pipelines:
