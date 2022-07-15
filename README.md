@@ -43,7 +43,7 @@ sequenceDiagram
 Make sure the follwing components are installed:
 
 - ingress-nginx ([installation guide](https://kubernetes.github.io/ingress-nginx/deploy))
-- cert-manager
+- cert-manager (Jaeger-Operator dependency on kubernetes)
 - Jaeger-Operator
 - OpenTelemetry-Operator
 - Skupper-Operator
