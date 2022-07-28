@@ -42,7 +42,7 @@ sequenceDiagram
 
 Make sure the follwing components are installed:
 
-- ingress-nginx ([installation guide](https://kubernetes.github.io/ingress-nginx/deploy))
+- ingress-nginx (dependency on kubernetes - [installation guide](https://kubernetes.github.io/ingress-nginx/deploy))
 - cert-manager (Jaeger-Operator dependency on kubernetes)
 - Jaeger-Operator
 - OpenTelemetry-Operator
@@ -102,6 +102,7 @@ skupper expose service/otel-collector-app-collector --address "otel-liked-collec
 LoadBalancer entries are automatically created by skupper. More detailed information how to configure `skupper-site-controller` can be found [here](https://github.com/skupperproject/skupper/blob/a861728adfec261d2db2c8b5085fc99bcca3d4be/cmd/site-controller/README.md).
 
 To establish an inter-cluster communication, certificates must be exchanged between the remote and edge clusters. Skupper generates the certificates and makes them available in a secret. In order to know which `secret` should be used to store the connection information the `secret` must be labeled with `skupper.io/type=connection-token-request`.
+Note that the certificates are **not** automatically renewed.
 
 #### Result
 
